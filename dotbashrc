@@ -10,7 +10,7 @@ source /usr/local/bin/virtualenvwrapper.sh
 #--------------------------------------------------------
 alias ll="ls -al"
 alias gst="git status"
-alias updatedb="sudo /usr/libexec/locate.updatedb"
+alias updatedb="/usr/libexec/locate.updatedb"
 alias sp="source ~/.profile"
 alias ep="vim ~/.profile"
 alias vim="/usr/local/Cellar/vim/7.4.488/bin/vim"
