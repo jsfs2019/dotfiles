@@ -1,0 +1,86 @@
+""-------------------------------------
+""vundle
+""--------------------------------------
+set nocompatible    " be iMproved
+filetype off        " required!
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'Valloric/ListToggle'
+Bundle 'scrooloose/syntastic'
+Bundle 'https://github.com/kien/ctrlp.vim.git'
+Bundle 'https://github.com/Raimondi/delimitMate'
+Bundle 'https://github.com/scrooloose/nerdcommenter'
+Bundle 'https://github.com/junegunn/vim-easy-align'
+Bundle 'https://github.com/terryma/vim-expand-region'
+Bundle 'https://github.com/terryma/vim-multiple-cursors'
+
+filetype plugin indent on
+
+""--------------------------------------
+""basic
+""--------------------------------------
+syntax on
+set number
+set encoding=utf-8
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+let mapleader=","
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
+nmap <silent> <leader>sv :so $MYVIMRC<CR>
+nmap <leader>e :tabe<Space>
+nmap <leader>r :e<Space>
+nmap <leader>s :split<Space>
+nmap <leader>v :vsplit<Space>
+nmap <leader>t :tabnew<CR>
+
+""--------------------------------------
+""multi-cursor
+""--------------------------------------
+let g:multi_cursor_exit_from_insert_mode=0
+
+""--------------------------------------
+""expand-region
+""--------------------------------------
+map K <Plug>(expand_region_expand)
+map J <Plug>(expand_region_shrink)
+
+""--------------------------------------
+""ctrlp
+""--------------------------------------
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+""--------------------------------------
+""ctrlp
+""--------------------------------------
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+nmap <silent> <leader>cp :CtrlPMixed<CR>
+
+
+
+
+
+""--------------------------------------
+""如果文件类型为python
+""--------------------------------------
+autocmd BufNewFile *.sh,*.py exec ":call AutoSetFileHead()"
+function! AutoSetFileHead()
+	"如果文件类型为.sh文件
+	if &filetype == 'sh'
+		call setline(1, "\#!/bin/bash")
+	endif
+
+	"如果文件类型为python
+	if &filetype == 'python'
+		call setline(1, "\#!/usr/bin/env python")
+		call append(1, "\# encoding:utf-8")
+	endif
+
+	normal G
+	normal o
+	normal o
+endfunc
