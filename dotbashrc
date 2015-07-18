@@ -8,13 +8,21 @@ source /usr/local/bin/virtualenvwrapper.sh
 #--------------------------------------------------------
 #alias and export 
 #--------------------------------------------------------
-alias ll="ls -al"
+export PATH=$PATH:/usr/share/mongodb/mongodb-osx-x86_64-3.0.1/bin
+export PATH=/usr/local/Cellar/openresty/1.7.2.1/bin:$PATH
+export DEPLOY=~/Devel/workspace/backend/deploy/
+export DEPLOY=~/Devel
+alias ll="ls -altr"
+alias grep="grep -iI"
 alias gst="git status"
 alias updatedb="/usr/libexec/locate.updatedb"
 alias sp="source ~/.profile"
 alias ep="vim ~/.profile"
 alias vim="/usr/local/Cellar/vim/7.4.488/bin/vim"
-export PATH=$PATH:/usr/share/mongodb/mongodb-osx-x86_64-3.0.1/bin
+alias mysql=/usr/local/mysql/bin/mysql
+alias mysqladmin=/usr/local/mysql/bin/mysqladmin
+alias cdy="cd $DEPLOY && workon ENV"
+alias dev="cd $DEPLOY && workon ENV"
 
 #--------------------------------------------------------
 #maven
@@ -23,18 +31,30 @@ export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 export PATH=$PATH:/usr/local/apache-maven/apache-maven-3.3.1/bin
 export MAVEN_OPTS="-Xms256m -Xmx512m"
 
+
+#--------------------------------------------------------
+#gradle
+#--------------------------------------------------------
+export GRADLE=/Library/gradle-2.3
+export PATH=$PATH:$GRADLE/bin
+
 #--------------------------------------------------------
 #color
 #--------------------------------------------------------
-export PS1="\[\e[0;31m\]\u@\h\[\e[0;33m\]:\[\e[1;34m\]\w
- \[\e[1;37m\]$ \[\e[m\]"
+#export PS1="\[\e[0;31m\]\u@\h\[\e[0;33m\]:\[\e[1;34m\]\w
+# \[\e[1;37m\]$ \[\e[m\]"
 
-if brew list | grep coreutils > /dev/null ; then
-  PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
-  alias ls='ls -F --show-control-chars --color=auto'
-  eval `gdircolors -b $HOME/.dir_colors`
-fi
+#if brew list | grep coreutils > /dev/null ; then
+#  PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+#  alias ls='ls -F --show-control-chars --color=auto'
+#  eval `gdircolors -b $HOME/.dir_colors`
+#fi
 
 alias grep='grep --color'
 alias egerp='egrep --color'
 alias fgrep='fgrep --color'
+
+#--------------------------------------------------------
+#color
+#--------------------------------------------------------
+export GOPATH=/Users/jaron/Devel/go_devel
