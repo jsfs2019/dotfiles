@@ -11,7 +11,8 @@ source /usr/local/bin/virtualenvwrapper.sh
 export PATH=$PATH:/usr/share/mongodb/mongodb-osx-x86_64-3.0.1/bin
 export PATH=/usr/local/Cellar/openresty/1.7.2.1/bin:$PATH
 export DEPLOY=~/Devel/workspace/backend/deploy/
-export DEPLOY=~/Devel
+export DEV=~/Devel
+alias cad="ssh cadmin@120.26.192.15"
 alias ll="ls -altr"
 alias grep="grep -iI"
 alias gst="git status"
@@ -22,7 +23,7 @@ alias vim="/usr/local/Cellar/vim/7.4.488/bin/vim"
 alias mysql=/usr/local/mysql/bin/mysql
 alias mysqladmin=/usr/local/mysql/bin/mysqladmin
 alias cdy="cd $DEPLOY && workon ENV"
-alias dev="cd $DEPLOY && workon ENV"
+alias dev="cd $DEV && workon ENV"
 
 #--------------------------------------------------------
 #maven
